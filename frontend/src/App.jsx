@@ -1,5 +1,5 @@
-import React from 'react'
 import Navbar from './components/Navbar'
+import UrlsHistory from './components/UrlsHistory'
 import UrlShort from './components/UrlShort'
 
 const App = () => {
@@ -7,6 +7,7 @@ const App = () => {
     <div>
       <Navbar />
       <UrlShort />
+      <UrlsHistory />
     </div>
   )
 }

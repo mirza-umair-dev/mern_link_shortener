@@ -64,5 +64,14 @@ const geturl = async (req,res) => {
     }
 }
 
+const getUrlHistory = async (req,res) => {
+  try {
+    const Urls = await Url.find();
+    res.json(Urls);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
 
-export {shortenUrl,geturl};
+
+export {shortenUrl,geturl,getUrlHistory};
