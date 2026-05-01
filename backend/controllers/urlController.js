@@ -5,7 +5,7 @@ const shortenUrl = async (req, res) => {
   const { originalUrl } = req.body;
 
   if (!originalUrl) {
-    return res.status(400).json({ sucsess: false, error: "No url found!" });
+    return res.status(400).json({ success: false, error: "No url found!" });
   }
 
   const existingUrl = await Url.findOne({ OriginalUrl: originalUrl });
@@ -19,7 +19,8 @@ const shortenUrl = async (req, res) => {
     });
   }
   //new
-
+  try {
+  
   const UrlId = nanoid(6);
   const newUrl = await Url.create({
     OriginalUrl: originalUrl,
@@ -33,8 +34,8 @@ const shortenUrl = async (req, res) => {
     UrlId: newUrl.UrlId,
     Clicks: newUrl.Clicks,
   });
-  try {
-  } catch (error) {
+}
+  catch (error) {
     return res.status(500).json({
       sucsess: false,
       error: "Server Error",
